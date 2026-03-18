@@ -18,7 +18,13 @@ function Projects() {
             <div key={project.id} className="project-card">
               <h2 className="project-title">{project.title}</h2>
 
-              <p className="project-desc">{project.description}</p>
+              <p className="project-card__meta">
+                {project.role} · {project.year}
+              </p>
+
+              <p className="project-card__description">
+                  {project.description}
+              </p>
 
               <div className="project-tech">
                 {project.tech.map((tech, i) => (
