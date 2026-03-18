@@ -1,0 +1,231 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top, rgba(59, 130, 246, 0.22), transparent 35%),
+    radial-gradient(circle at 80% 30%, rgba(168, 85, 247, 0.18), transparent 25%),
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.08), transparent 20%);
+  pointer-events: none;
+}
+
+.hero__container {
+  position: relative;
+  min-height: calc(100vh - 80px);
+  display: grid;
+  align-items: center;
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero__eyebrow {
+  margin-bottom: 18px;
+  color: var(--accent-blue);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.hero__title {
+  max-width: 900px;
+  font-size: clamp(3rem, 6vw, 5.4rem);
+  line-height: 1.02;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.hero__description {
+  margin-top: 24px;
+  max-width: 660px;
+  color: var(--text-secondary);
+  font-size: 1.08rem;
+  line-height: 1.9;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.hero__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 52px;
+}
+
+.hero__stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.hero__stat-label {
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.hero__panel {
+  position: relative;
+}
+
+.hero__panel-glow {
+  position: absolute;
+  inset: -24px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(
+    90deg,
+    rgba(59, 130, 246, 0.18),
+    rgba(168, 85, 247, 0.18),
+    rgba(255, 255, 255, 0.08)
+  );
+  filter: blur(40px);
+}
+
+.hero__panel-card {
+  position: relative;
+  padding: 24px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hero__window-dots {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.hero__window-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.hero__window-dot--red {
+  background: #f87171;
+}
+
+.hero__window-dot--yellow {
+  background: #facc15;
+}
+
+.hero__window-dot--green {
+  background: #4ade80;
+}
+
+.hero__panel-inner {
+  padding: 24px;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.hero__panel-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.hero__panel-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.hero__badge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(96, 165, 250, 0.12);
+  color: #a5d8ff;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.hero__panel-title {
+  margin-top: 18px;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.hero__panel-text {
+  margin-top: 14px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.hero__mini-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.hero__mini-card,
+.hero__bottom-card {
+  padding: 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.hero__mini-label {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.hero__mini-value {
+  margin-top: 10px;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.hero__bottom-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 16px;
+}
+
+@media (max-width: 1024px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__container {
+    min-height: auto;
+    padding: 60px 0 80px;
+  }
+
+  .hero__description {
+    font-size: 1rem;
+  }
+
+  .hero__stats {
+    gap: 24px;
+  }
+
+  .hero__mini-grid,
+  .hero__bottom-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Portfolio Website
 
 A modern software engineering portfolio built with React, Tailwind CSS, and advanced UI/UX principles.
@@ -24,3 +25,4 @@ A modern software engineering portfolio built with React, Tailwind CSS, and adva
 ## 👤 Author
 Alireza Saeb  
 Software Engineer
+=======

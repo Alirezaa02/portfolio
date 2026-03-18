@@ -1,0 +1,17 @@
+:root {
+  --bg-primary: #050816;
+  --bg-secondary: #0b1020;
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-strong: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.12);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-muted: rgba(255, 255, 255, 0.5);
+  --accent-blue: #60a5fa;
+  --accent-purple: #a855f7;
+  --container-width: 1200px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+  --transition: 0.3s ease;
+  --shadow-lg: 0 20px 80px rgba(0, 0, 0, 0.35);
+}
