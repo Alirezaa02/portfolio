@@ -57,3 +57,8 @@
     grid-template-columns: 1fr;
   }
 }
+.project-card__meta {
+  margin-top: 10px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
