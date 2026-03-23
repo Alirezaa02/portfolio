@@ -13,15 +13,16 @@ function About() {
             </h2>
 
             <p className="section-text">
-              I enjoy developing full-stack applications that combine clean user interfaces,
-              maintainable architecture, and practical business value. My interests include
-              frontend engineering, system design, and creating products that feel polished
-              and reliable in real-world use.
+              I’m interested in building software that is not only functional, but also
+              thoughtfully designed and maintainable. My work spans full-stack development,
+              internal systems, and product-oriented web experiences that prioritise usability
+              and long-term scalability.
             </p>
 
             <p className="section-text">
-              I approach projects with a strong focus on structure, usability, and long-term
-              scalability, aiming to build software that is both technically solid and visually refined.
+              I enjoy solving practical problems through clean architecture, modern development
+              tools, and clear user-focused design. I’m especially drawn to projects where
+              engineering quality and interface quality matter equally.
             </p>
           </div>
 

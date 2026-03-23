@@ -1,19 +1,23 @@
 import '../../src/styles/experience.css'
+import atlasLogo from '../assets/icons/company1.png'
+import eliteLogo from '../assets/icons/elitedev.jpg'
 
 const experienceItems = [
   {
     role: 'Software Developer',
     company: 'Atlas Blind & Curtain',
     period: 'Current',
+    logo: atlasLogo,
     description:
-      'Working on internal tools, business systems, and software solutions with a focus on clean functionality and practical outcomes.',
+      'Contributing to internal software systems and business-focused tools, with an emphasis on practical workflow improvements, maintainable code, and reliable functionality.',
   },
   {
     role: 'Web Developer Intern',
     company: 'Elite Dev',
     period: 'Previous',
+    logo: eliteLogo,
     description:
-      'Contributed to frontend and development tasks, strengthening skills in responsive UI, modern tooling, and web-based product development.',
+      'Supported frontend and web development tasks, building experience in responsive interfaces, modern tooling, and collaborative product development.',
   },
 ]
 

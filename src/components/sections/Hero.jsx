@@ -12,13 +12,14 @@ function Hero() {
             <p className="hero__eyebrow">Software Engineer</p>
 
             <h1 className="hero__title">
-              Building polished digital products with strong engineering foundations.
+              Building modern software with clean architecture, practical impact, and polished user experience.
             </h1>
 
             <p className="hero__description">
-              I design and develop modern web applications, internal systems,
-              and full-stack experiences with a focus on usability, performance,
-              and clean architecture.
+              I’m Alireza Saeb, a software engineer focused on full-stack development,
+              internal business systems, and modern web applications. I enjoy building
+              products that combine strong engineering structure with intuitive and
+              well-crafted interfaces.
             </p>
 
             <div className="hero__actions">
@@ -39,13 +40,19 @@ function Hero() {
 
               <div>
                 <p className="hero__stat-value">Full-Stack</p>
-                <p className="hero__stat-label">Engineering mindset</p>
+                <p className="hero__stat-label">Development focus</p>
               </div>
 
               <div>
                 <p className="hero__stat-value">React</p>
-                <p className="hero__stat-label">Frontend focus</p>
+                <p className="hero__stat-label">Frontend engineering</p>
               </div>
+
+              <div>
+                <p className="hero__stat-value">Cloud</p>
+                <p className="hero__stat-label">Scalable systems</p>
+              </div>
+
             </div>
           </div>
 
