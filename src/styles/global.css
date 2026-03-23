@@ -109,3 +109,7 @@ img {
     width: min(100% - 32px, var(--container-width));
   }
 }
+
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

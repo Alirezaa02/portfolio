@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import '../../styles/hero.css'
 
 function Hero() {
@@ -8,18 +9,24 @@ function Hero() {
 
       <div className="container hero__container">
         <div className="hero__grid">
-          <div className="hero__content">
+          <motion.div
+            className="hero__content"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+          >
             <p className="hero__eyebrow">Software Engineer</p>
 
             <h1 className="hero__title">
-              Building modern software with clean architecture, practical impact, and polished user experience.
+              Building modern software with clean architecture, practical impact,
+              and polished user experience.
             </h1>
 
             <p className="hero__description">
-              I’m Alireza Saeb, a software engineer focused on full-stack development,
-              internal business systems, and modern web applications. I enjoy building
-              products that combine strong engineering structure with intuitive and
-              well-crafted interfaces.
+              I’m Alireza Saeb, a software engineer focused on full-stack
+              development, internal business systems, and modern web
+              applications. I enjoy building products that combine strong
+              engineering structure with intuitive and well-crafted interfaces.
             </p>
 
             <div className="hero__actions">
@@ -34,11 +41,6 @@ function Hero() {
 
             <div className="hero__stats">
               <div>
-                <p className="hero__stat-value">2+</p>
-                <p className="hero__stat-label">Industry roles</p>
-              </div>
-
-              <div>
                 <p className="hero__stat-value">Full-Stack</p>
                 <p className="hero__stat-label">Development focus</p>
               </div>
@@ -52,11 +54,15 @@ function Hero() {
                 <p className="hero__stat-value">Cloud</p>
                 <p className="hero__stat-label">Scalable systems</p>
               </div>
-
             </div>
-          </div>
+          </motion.div>
 
-          <div className="hero__panel">
+          <motion.div
+            className="hero__panel"
+            initial={{ opacity: 0, y: 40, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.9, ease: 'easeOut', delay: 0.15 }}
+          >
             <div className="hero__panel-glow" />
 
             <div className="hero__panel-card">
@@ -114,7 +120,7 @@ function Hero() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

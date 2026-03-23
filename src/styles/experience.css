@@ -26,7 +26,7 @@
 }
 
 .experience__card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px) scale(1.01);
   border-color: rgba(255, 255, 255, 0.22);
 }
 
