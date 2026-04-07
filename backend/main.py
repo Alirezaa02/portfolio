@@ -15,7 +15,7 @@ ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://localhost:4173",
     os.getenv("FRONTEND_URL", ""),          # set this on Render
-    "https://alirezasaeb.vercel.app",       # your Vercel domain
+    "https://portfolio-demo-ten-topaz.vercel.app",
 ]
 
 app.add_middleware(
