@@ -1,17 +1,20 @@
 import '../../styles/contact.css'
+import Reveal from '../ui/Reveal.jsx'
 
 function Contact() {
   return (
     <main className="section">
       <div className="container">
-        <div className="contact-page__intro">
-          <h1 className="section-title">Contact</h1>
-          <p className="section-text">
-            Feel free to reach out for opportunities, collaborations, or general
-            conversations about software engineering and product development.
-          </p>
-        </div>
-
+        <Reveal>
+          <div className="contact-page__intro">
+            <h1 className="section-title">Contact</h1>
+            <p className="section-text">
+              Feel free to reach out for opportunities, collaborations, or general
+              conversations about software engineering and product development.
+            </p>
+          </div>
+        </Reveal>
+        <Reveal delay={0.1}>
         <div className="contact-page__grid">
           <article className="contact-page__card">
             <p className="contact-page__label">Email</p>
@@ -45,6 +48,7 @@ function Contact() {
             <p className="contact-page__value">Open to opportunities</p>
           </article>
         </div>
+        </Reveal>
       </div>
     </main>
   )

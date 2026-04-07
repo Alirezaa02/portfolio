@@ -1,20 +1,14 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
 import '../../styles/hero.css'
 
 function Hero() {
   return (
     <section className="hero">
-      <div className="hero__bg" />
+      <div className="hero__bg"></div>
 
       <div className="container hero__container">
         <div className="hero__grid">
-          <motion.div
-            className="hero__content"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-          >
+          <div className="hero__content">
             <p className="hero__eyebrow">Software Engineer</p>
 
             <h1 className="hero__title">
@@ -24,9 +18,7 @@ function Hero() {
 
             <p className="hero__description">
               I’m Alireza Saeb, a software engineer focused on full-stack
-              development, internal business systems, and modern web
-              applications. I enjoy building products that combine strong
-              engineering structure with intuitive and well-crafted interfaces.
+              development, internal business systems, and modern web applications.
             </p>
 
             <div className="hero__actions">
@@ -55,30 +47,22 @@ function Hero() {
                 <p className="hero__stat-label">Scalable systems</p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="hero__panel"
-            initial={{ opacity: 0, y: 40, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.9, ease: 'easeOut', delay: 0.15 }}
-          >
-            <div className="hero__panel-glow" />
+          <div className="hero__panel">
+            <div className="hero__panel-glow"></div>
 
             <div className="hero__panel-card">
               <div className="hero__window-dots">
-                <span className="hero__window-dot hero__window-dot--red" />
-                <span className="hero__window-dot hero__window-dot--yellow" />
-                <span className="hero__window-dot hero__window-dot--green" />
+                <span className="hero__window-dot hero__window-dot--red"></span>
+                <span className="hero__window-dot hero__window-dot--yellow"></span>
+                <span className="hero__window-dot hero__window-dot--green"></span>
               </div>
 
               <div className="hero__panel-inner">
                 <div className="hero__panel-top">
                   <span className="hero__panel-label">Current Focus</span>
-
-                  <span className="hero__badge px-3 py-1 rounded-full">
-                    Portfolio Build
-                  </span>
+                  <span className="hero__badge">Portfolio Build</span>
                 </div>
 
                 <h3 className="hero__panel-title">
@@ -86,8 +70,8 @@ function Hero() {
                 </h3>
 
                 <p className="hero__panel-text">
-                  A modern portfolio experience showcasing full-stack projects,
-                  software engineering experience, and product-focused UI design.
+                  A modern portfolio experience showcasing projects, software
+                  engineering experience, and product-focused UI design.
                 </p>
 
                 <div className="hero__mini-grid">
@@ -120,7 +104,7 @@ function Hero() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -5,6 +5,7 @@ const navItems = [
   { name: 'Home', path: '/' },
   { name: 'Projects', path: '/projects' },
   { name: 'Experience', path: '/experience' },
+  { name: 'Education', path: '/education' },
   { name: 'Contact', path: '/contact' },
 ]
 
@@ -31,7 +32,7 @@ function Navbar() {
         </nav>
 
         <a href="mailto:saebalireza02@gmail.com" className="site-header__cta">
-          Let’s Talk
+          Let's Talk
         </a>
       </div>
     </header>

@@ -24,8 +24,10 @@
   padding: 22px;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
-  background: var(--surface);
-  transition: var(--transition);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03)),
+     var(--surface); 
+   transition: var(--transition);
 }
 
 .about__card:hover {
@@ -46,6 +48,39 @@
   font-size: 0.95rem;
 }
 
+.about__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.about__meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.about__meta-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.about__meta-value {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.about__meta-value--open {
+  color: #4ade80;
+}
+
 @media (max-width: 900px) {
   .about__grid {
     grid-template-columns: 1fr;
@@ -57,3 +92,4 @@
     grid-template-columns: 1fr;
   }
 }
+

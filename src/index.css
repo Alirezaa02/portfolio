@@ -1,3 +1,13 @@
 @import "tailwindcss";
 @import "./styles/variables.css";
 @import "./styles/global.css";
+
+.section {
+  padding: 100px 0;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 70px 0;
+  }
+}
