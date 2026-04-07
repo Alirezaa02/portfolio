@@ -1,16 +1,19 @@
 import { Link, NavLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useAuth } from '../../context/AuthContext'
 import '../../styles/navbar.css'
 
 const navItems = [
   { name: 'Home', path: '/' },
-  { name: 'Projects', path: '/projects' },
+  { name: 'Projects', path: '/projects', gated: true },
   { name: 'Experience', path: '/experience' },
   { name: 'Education', path: '/education' },
   { name: 'Contact', path: '/contact' },
 ]
 
 function Navbar() {
+  const { isLoggedIn, logout } = useAuth()
+
   return (
     <motion.header
       className="site-header"
@@ -28,6 +31,7 @@ function Navbar() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2.9 + i * 0.07, duration: 0.4 }}
+              className="site-nav__item"
             >
               <NavLink
                 to={item.path}
@@ -36,20 +40,28 @@ function Navbar() {
                 }
               >
                 {item.name}
+                {item.gated && !isLoggedIn && (
+                  <span className="site-nav__lock">🔒</span>
+                )}
               </NavLink>
             </motion.div>
           ))}
         </nav>
 
-        <motion.a
-          href="mailto:saebalireza02@gmail.com"
-          className="site-header__cta"
+        <motion.div
+          className="site-header__right"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 3.2, duration: 0.4 }}
         >
-          Let's Talk
-        </motion.a>
+          {isLoggedIn ? (
+            <button className="site-header__cta" onClick={logout}>Log Out</button>
+          ) : (
+            <a href="mailto:saebalireza02@gmail.com" className="site-header__cta">
+              Let's Talk
+            </a>
+          )}
+        </motion.div>
       </div>
     </motion.header>
   )
