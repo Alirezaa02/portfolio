@@ -9,9 +9,18 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Alireza Saeb — Portfolio API")
 
+import os
+
+ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://localhost:4173",
+    os.getenv("FRONTEND_URL", ""),          # set this on Render
+    "https://alirezasaeb.vercel.app",       # your Vercel domain
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:4173"],
+    allow_origins=[o for o in ALLOWED_ORIGINS if o],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

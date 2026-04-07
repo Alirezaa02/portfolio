@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
+import API from '../lib/api'
 import '../styles/admin.css'
-
-const API = 'http://localhost:8000'
 
 function useApi(token) {
   async function request(method, path, body) {
