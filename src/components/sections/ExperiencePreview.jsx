@@ -7,7 +7,7 @@ function ExperiencePreview() {
   return (
     <section className="experience section">
       <div className="container">
-        <Reveal>
+        <Reveal direction="left">
           <div className="experience__intro">
             <p className="experience__eyebrow">Experience</p>
             <h2 className="section-title">

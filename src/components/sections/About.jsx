@@ -5,7 +5,7 @@ function About() {
   return (
     <section className="about section">
       <div className="container">
-        <Reveal>
+        <Reveal direction="left">
           <div className="about__grid">
             <div className="about__content">
               <p className="about__eyebrow">About Me</p>

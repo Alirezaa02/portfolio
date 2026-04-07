@@ -1,4 +1,5 @@
 import { Link, NavLink } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import '../../styles/navbar.css'
 
 const navItems = [
@@ -11,31 +12,46 @@ const navItems = [
 
 function Navbar() {
   return (
-    <header className="site-header">
+    <motion.header
+      className="site-header"
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, delay: 2.8, ease: [0.22, 1, 0.36, 1] }}
+    >
       <div className="site-header__inner">
-        <Link to="/" className="site-logo">
-          Alireza Saeb
-        </Link>
+        <Link to="/" className="site-logo">Alireza Saeb</Link>
 
         <nav className="site-nav">
-          {navItems.map((item) => (
-            <NavLink
+          {navItems.map((item, i) => (
+            <motion.div
               key={item.path}
-              to={item.path}
-              className={({ isActive }) =>
-                `site-nav__link ${isActive ? 'active' : ''}`
-              }
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 2.9 + i * 0.07, duration: 0.4 }}
             >
-              {item.name}
-            </NavLink>
+              <NavLink
+                to={item.path}
+                className={({ isActive }) =>
+                  `site-nav__link ${isActive ? 'active' : ''}`
+                }
+              >
+                {item.name}
+              </NavLink>
+            </motion.div>
           ))}
         </nav>
 
-        <a href="mailto:saebalireza02@gmail.com" className="site-header__cta">
+        <motion.a
+          href="mailto:saebalireza02@gmail.com"
+          className="site-header__cta"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 3.2, duration: 0.4 }}
+        >
           Let's Talk
-        </a>
+        </motion.a>
       </div>
-    </header>
+    </motion.header>
   )
 }
 
