@@ -21,7 +21,11 @@ class Project(Base):
     overview    = Column(Text, default="")
     role        = Column(String, default="")
     year        = Column(String, default="")
-    tech        = Column(String, default="")   # comma-separated
+    tech        = Column(String, default="")        # comma-separated
+    highlights  = Column(Text, default="")          # newline-separated
+    learnings   = Column(Text, default="")          # newline-separated
+    github      = Column(String, default="")
+    category    = Column(String, default="")
 
 
 class Experience(Base):

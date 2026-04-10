@@ -28,7 +28,7 @@ function useApi(token) {
 // ── Project Form ──────────────────────────────────────
 function ProjectForm({ initial, onSave, onCancel }) {
   const [form, setForm] = useState(
-    initial || { slug: '', title: '', description: '', overview: '', role: '', year: '', tech: '' }
+    initial || { slug: '', title: '', description: '', overview: '', role: '', year: '', tech: '', highlights: '', learnings: '', github: '', category: '' }
   )
   function set(k, v) { setForm(f => ({ ...f, [k]: v })) }
 
@@ -39,17 +39,24 @@ function ProjectForm({ initial, onSave, onCancel }) {
         { key: 'title', label: 'Title', ph: 'Project Title' },
         { key: 'role', label: 'Your Role', ph: 'Full-Stack Developer' },
         { key: 'year', label: 'Year', ph: '2025' },
+        { key: 'category', label: 'Category', ph: 'Full-Stack · AI · Cloud' },
         { key: 'tech', label: 'Tech (comma-separated)', ph: 'React, FastAPI, Docker' },
+        { key: 'github', label: 'GitHub URL', ph: 'https://github.com/...' },
       ].map(({ key, label, ph }) => (
         <div className="admin-form__field" key={key}>
           <label className="admin-form__label">{label}</label>
           <input className="admin-form__input" placeholder={ph} value={form[key]} onChange={e => set(key, e.target.value)} />
         </div>
       ))}
-      {['description', 'overview'].map(key => (
+      {[
+        { key: 'description', label: 'Description', rows: 2 },
+        { key: 'overview', label: 'Overview', rows: 3 },
+        { key: 'highlights', label: 'Highlights (one per line)', rows: 5 },
+        { key: 'learnings', label: 'Learnings (one per line)', rows: 4 },
+      ].map(({ key, label, rows }) => (
         <div className="admin-form__field" key={key}>
-          <label className="admin-form__label">{key.charAt(0).toUpperCase() + key.slice(1)}</label>
-          <textarea className="admin-form__textarea" rows={3} value={form[key]} onChange={e => set(key, e.target.value)} />
+          <label className="admin-form__label">{label}</label>
+          <textarea className="admin-form__textarea" rows={rows} value={form[key]} onChange={e => set(key, e.target.value)} />
         </div>
       ))}
       <div className="admin-form__actions">

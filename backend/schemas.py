@@ -27,6 +27,10 @@ class ProjectBase(BaseModel):
     role:        Optional[str] = ""
     year:        Optional[str] = ""
     tech:        Optional[str] = ""   # comma-separated string
+    highlights:  Optional[str] = ""  # newline-separated
+    learnings:   Optional[str] = ""  # newline-separated
+    github:      Optional[str] = ""
+    category:    Optional[str] = ""
 
 
 class ProjectCreate(ProjectBase):
@@ -40,6 +44,10 @@ class ProjectUpdate(BaseModel):
     role:        Optional[str] = None
     year:        Optional[str] = None
     tech:        Optional[str] = None
+    highlights:  Optional[str] = None
+    learnings:   Optional[str] = None
+    github:      Optional[str] = None
+    category:    Optional[str] = None
 
 
 class ProjectOut(ProjectBase):

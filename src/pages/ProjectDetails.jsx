@@ -1,12 +1,60 @@
+import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import projects from '../data/projects'
+import staticProjects from '../data/projects'
 import Reveal from '../components/ui/Reveal.jsx'
 import '../styles/project-details.css'
+import API from '../lib/api'
+
+function parseList(str) {
+  if (Array.isArray(str)) return str
+  if (!str) return []
+  return str.split('\n').map(s => s.trim()).filter(Boolean)
+}
+
+function parseTech(tech) {
+  if (Array.isArray(tech)) return tech
+  if (!tech) return []
+  return tech.split(',').map(t => t.trim()).filter(Boolean)
+}
+
+function normalise(p) {
+  return {
+    ...p,
+    tech: parseTech(p.tech),
+    highlights: parseList(p.highlights),
+    learnings: parseList(p.learnings),
+  }
+}
 
 function ProjectDetails() {
   const { slug } = useParams()
-  const project = projects.find(p => p.slug === slug)
+  const [project, setProject] = useState(() => {
+    const s = staticProjects.find(p => p.slug === slug)
+    return s ? normalise(s) : null
+  })
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetch(`${API}/projects/${slug}`)
+      .then(r => {
+        if (!r.ok) throw new Error()
+        return r.json()
+      })
+      .then(data => setProject(normalise(data)))
+      .catch(() => {/* keep static fallback */})
+      .finally(() => setLoading(false))
+  }, [slug])
+
+  if (loading && !project) {
+    return (
+      <main className="section">
+        <div className="container">
+          <p style={{ color: 'var(--text-muted)' }}>Loading...</p>
+        </div>
+      </main>
+    )
+  }
 
   if (!project) {
     return (
@@ -77,56 +125,62 @@ function ProjectDetails() {
         <div className="pd-body">
 
           {/* Overview */}
-          <Reveal direction="left" delay={0.05}>
-            <section className="pd-section">
-              <h2 className="pd-section__title">Overview</h2>
-              <p className="pd-section__text">{project.overview}</p>
-            </section>
-          </Reveal>
+          {project.overview && (
+            <Reveal direction="left" delay={0.05}>
+              <section className="pd-section">
+                <h2 className="pd-section__title">Overview</h2>
+                <p className="pd-section__text">{project.overview}</p>
+              </section>
+            </Reveal>
+          )}
 
           {/* Highlights */}
-          <Reveal direction="right" delay={0.05}>
-            <section className="pd-section">
-              <h2 className="pd-section__title">Key Features & Contributions</h2>
-              <ul className="pd-list">
-                {project.highlights.map((h, i) => (
-                  <motion.li
-                    key={i}
-                    className="pd-list__item"
-                    initial={{ opacity: 0, x: -16 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.08, duration: 0.5 }}
-                  >
-                    {h}
-                  </motion.li>
-                ))}
-              </ul>
-            </section>
-          </Reveal>
+          {project.highlights.length > 0 && (
+            <Reveal direction="right" delay={0.05}>
+              <section className="pd-section">
+                <h2 className="pd-section__title">Key Features & Contributions</h2>
+                <ul className="pd-list">
+                  {project.highlights.map((h, i) => (
+                    <motion.li
+                      key={i}
+                      className="pd-list__item"
+                      initial={{ opacity: 0, x: -16 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.08, duration: 0.5 }}
+                    >
+                      {h}
+                    </motion.li>
+                  ))}
+                </ul>
+              </section>
+            </Reveal>
+          )}
 
           {/* Learnings */}
-          <Reveal direction="up" delay={0.05}>
-            <section className="pd-section">
-              <h2 className="pd-section__title">What I Learned</h2>
-              <div className="pd-learnings">
-                {project.learnings.map((l, i) => (
-                  <motion.div
-                    key={i}
-                    className="pd-learning-card"
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1, duration: 0.5 }}
-                    whileHover={{ y: -4 }}
-                  >
-                    <span className="pd-learning-num">0{i + 1}</span>
-                    <p className="pd-learning-text">{l}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </section>
-          </Reveal>
+          {project.learnings.length > 0 && (
+            <Reveal direction="up" delay={0.05}>
+              <section className="pd-section">
+                <h2 className="pd-section__title">What I Learned</h2>
+                <div className="pd-learnings">
+                  {project.learnings.map((l, i) => (
+                    <motion.div
+                      key={i}
+                      className="pd-learning-card"
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1, duration: 0.5 }}
+                      whileHover={{ y: -4 }}
+                    >
+                      <span className="pd-learning-num">0{i + 1}</span>
+                      <p className="pd-learning-text">{l}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </section>
+            </Reveal>
+          )}
 
           {/* Tech stack */}
           <Reveal direction="up" delay={0.05}>
