@@ -25,6 +25,7 @@ const projects = [
     ],
     github: 'https://github.com/Alirezaa02/ed-agentic-ai-with-agents-slim',
     category: 'Full-Stack · Agentic AI · Healthcare',
+    image: '/projects/ai-triage.png',
   },
   {
     id: 2,
@@ -53,6 +54,7 @@ const projects = [
     ],
     github: 'https://github.com/Alirezaa02/webvis-oakd-dashboard',
     category: 'Full-Stack · AI Vision · UAV · Real-Time',
+    image: '/projects/oakd-dashboard.png',
   },
   {
     id: 3,
@@ -79,6 +81,34 @@ const projects = [
     ],
     github: '',
     category: 'Cloud · Backend · DevOps',
+    image: null,
+  },
+  {
+    id: 4,
+    slug: 'sokoban-ai-planner',
+    title: 'Sokoban AI Planning Agent',
+    description:
+      'An intelligent AI agent that solves Sokoban warehouse puzzles using A* search with custom heuristics, minimising movement cost while pushing weighted boxes to goal positions.',
+    tech: ['Python', 'A* Search', 'Jupyter Notebook', 'AI Planning'],
+    overview:
+      'Developed as part of QUT\'s CAB320 Artificial Intelligence course, this project implements an informed search agent that navigates a warehouse environment, pushing weighted boxes to designated goal positions while minimising total cost. The agent uses A* search with a custom heuristic based on Manhattan distances and box weights.',
+    role: 'AI Developer',
+    year: '2024',
+    highlights: [
+      'Implemented A* search algorithm with a custom admissible heuristic for optimal pathfinding',
+      'Designed state representation to efficiently encode the warehouse grid, box positions, and agent location',
+      'Used Manhattan distance combined with box weights in the heuristic function to guide search efficiently',
+      'Applied cost formula (1 + box weight) to evaluate push actions, balancing exploration and exploitation',
+      'Tested across multiple puzzle configurations with varying box counts and grid complexities',
+    ],
+    learnings: [
+      'Deepened understanding of informed search algorithms and the importance of heuristic admissibility',
+      'Learned how state space design directly impacts search performance and memory usage',
+      'Gained practical experience applying AI planning concepts to a constrained real-world problem',
+    ],
+    github: 'https://github.com/Alirezaa02/sokoban-ai-planner',
+    category: 'AI · Search Algorithms · Python',
+    image: null,
   },
 ]
 

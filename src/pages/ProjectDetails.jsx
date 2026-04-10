@@ -81,6 +81,9 @@ function ProjectDetails() {
         {/* Hero banner */}
         <Reveal delay={0.05}>
           <div className="pd-hero">
+            {project.image && (
+              <img src={project.image} alt={project.title} className="pd-hero__image" />
+            )}
             <div className="pd-hero__glow" />
             <div className="pd-hero__content">
               <p className="pd-hero__category">{project.category}</p>
