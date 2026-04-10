@@ -151,6 +151,7 @@ function Admin() {
   const [projects, setProjects] = useState([])
   const [experience, setExperience] = useState([])
   const [skills, setSkills] = useState([])
+  const [users, setUsers] = useState([])
   const [editing, setEditing] = useState(null)
   const [adding, setAdding] = useState(false)
   const [msg, setMsg] = useState('')
@@ -158,14 +159,17 @@ function Admin() {
   useEffect(() => { loadAll() }, [])
 
   async function loadAll() {
-    const [p, e, s] = await Promise.all([
+    const headers = { Authorization: `Bearer ${token}` }
+    const [p, e, s, u] = await Promise.all([
       fetch(`${API}/projects/`).then(r => r.json()),
       fetch(`${API}/experience/`).then(r => r.json()),
       fetch(`${API}/skills/`).then(r => r.json()),
+      fetch(`${API}/users/`, { headers }).then(r => r.ok ? r.json() : []),
     ])
     setProjects(p)
     setExperience(e)
     setSkills(s)
+    setUsers(u)
   }
 
   function flash(text) {
@@ -239,12 +243,21 @@ function Admin() {
     loadAll()
   }
 
+  async function deleteUser(id) {
+    if (!confirm('Delete this user?')) return
+    try {
+      await request('DELETE', `/users/${id}`)
+      flash('User deleted')
+      loadAll()
+    } catch (e) { flash(e.message) }
+  }
+
   function handleLogout() {
     logout()
     navigate('/')
   }
 
-  const tabs = ['projects', 'experience', 'skills']
+  const tabs = ['projects', 'experience', 'skills', 'users']
 
   return (
     <main className="admin section">
@@ -338,6 +351,34 @@ function Admin() {
                   </div>
                 ))}
                 {experience.length === 0 && <p className="admin__empty">No experience yet. Add one above.</p>}
+              </div>
+            </div>
+          )}
+
+          {/* Users tab */}
+          {tab === 'users' && (
+            <div className="admin__section">
+              <div className="admin__section-header">
+                <h2 className="admin__section-title">Registered Users</h2>
+                <span className="admin__item-meta">{users.length} total</span>
+              </div>
+              <div className="admin__list">
+                {users.map(u => (
+                  <div key={u.id} className="admin__item">
+                    <div className="admin__item-info">
+                      <p className="admin__item-title">{u.email}</p>
+                      <p className="admin__item-meta">
+                        {u.is_admin ? '👑 Admin' : '👤 Visitor'} · ID #{u.id}
+                      </p>
+                    </div>
+                    <div className="admin__item-actions">
+                      {!u.is_admin && (
+                        <button className="admin__btn-delete" onClick={() => deleteUser(u.id)}>Delete</button>
+                      )}
+                    </div>
+                  </div>
+                ))}
+                {users.length === 0 && <p className="admin__empty">No users yet.</p>}
               </div>
             </div>
           )}

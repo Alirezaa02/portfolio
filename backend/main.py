@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database import engine
 import models
-from routers import auth, projects, experience, skills
+from routers import auth, projects, experience, skills, users
 
 # Create all tables
 models.Base.metadata.create_all(bind=engine)
@@ -30,6 +30,7 @@ app.include_router(auth.router)
 app.include_router(projects.router)
 app.include_router(experience.router)
 app.include_router(skills.router)
+app.include_router(users.router)
 
 
 @app.get("/")
