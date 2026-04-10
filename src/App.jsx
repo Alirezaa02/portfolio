@@ -7,6 +7,8 @@ import Footer from './components/layout/Footer.jsx'
 import LoadingScreen from './components/ui/LoadingScreen.jsx'
 import PageTransition from './components/ui/PageTransition.jsx'
 import ProtectedRoute from './components/ui/ProtectedRoute.jsx'
+import ScrollProgress from './components/ui/ScrollProgress.jsx'
+import BackToTop from './components/ui/BackToTop.jsx'
 import Home from './pages/Home.jsx'
 import Projects from './pages/Projects.jsx'
 import ProjectDetails from './pages/ProjectDetails.jsx'
@@ -15,6 +17,7 @@ import Education from './pages/Education.jsx'
 import Contact from './pages/Contact.jsx'
 import Login from './pages/Login.jsx'
 import Admin from './pages/Admin.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -47,6 +50,8 @@ function AnimatedRoutes() {
             <PageTransition><Admin /></PageTransition>
           </ProtectedRoute>
         } />
+
+        <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
     </AnimatePresence>
   )
@@ -63,10 +68,12 @@ function App() {
   return (
     <AuthProvider>
       <div className="page-shell">
+        <ScrollProgress />
         <LoadingScreen isVisible={loading} />
         <Navbar />
         <AnimatedRoutes />
         <Footer />
+        <BackToTop />
       </div>
     </AuthProvider>
   )

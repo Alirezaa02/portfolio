@@ -44,9 +44,24 @@
   gap: 4px;
 }
 
-.site-nav__link:hover,
+.site-nav__link:hover {
+  color: var(--text-primary);
+}
+
 .site-nav__link.active {
   color: var(--text-primary);
+  position: relative;
+}
+
+.site-nav__link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent-blue);
 }
 
 .site-nav__lock {
@@ -139,10 +154,14 @@
   transition: background 0.2s, color 0.2s;
 }
 
-.mobile-menu__link:hover,
-.mobile-menu__link.active {
+.mobile-menu__link:hover {
   background: rgba(255, 255, 255, 0.06);
   color: var(--text-primary);
+}
+
+.mobile-menu__link.active {
+  background: rgba(96, 165, 250, 0.1);
+  color: var(--accent-blue);
 }
 
 .mobile-menu__footer {
