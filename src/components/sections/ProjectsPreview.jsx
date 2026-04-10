@@ -3,6 +3,12 @@ import projects from '../../data/projects'
 import '../../styles/projects.css'
 import Reveal from '../ui/Reveal.jsx'
 
+const gradients = [
+  'linear-gradient(135deg, #1e3a5f 0%, #0f2027 100%)',
+  'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+]
+const gradientIcons = ['🤖', '📡']
+
 function ProjectsPreview() {
   const featuredProjects = projects.slice(0, 2)
 
@@ -19,38 +25,46 @@ function ProjectsPreview() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <div className="projects__grid">
-            {featuredProjects.map((project) => (
-              <article key={project.id} className="project-card">
-                <h3 className="project-card__title">{project.title}</h3>
+        <div className="projects-grid" style={{ marginTop: '40px' }}>
+          {featuredProjects.map((project, index) => (
+            <Reveal key={project.id} delay={index * 0.1}>
+              <div className="project-card">
+                {project.image ? (
+                  <img src={project.image} alt={project.title} className="project-card__image" />
+                ) : (
+                  <div
+                    className="project-card__gradient"
+                    style={{ background: gradients[index % gradients.length] }}
+                  >
+                    {gradientIcons[index % gradientIcons.length]}
+                  </div>
+                )}
 
-                <p className="project-card__meta">
-                  {project.role} · {project.year}
-                </p>
+                <div className="project-card__body">
+                  <h3 className="project-title">{project.title}</h3>
 
-                <p className="project-card__description">
-                  {project.description}
-                </p>
+                  <p className="project-card__meta">
+                    {project.role} · {project.year}
+                  </p>
 
-                <div className="project-card__tech">
-                  {project.tech.map((item) => (
-                    <span key={item} className="project-card__tag">
-                      {item}
-                    </span>
-                  ))}
+                  <p className="project-card__description">
+                    {project.description}
+                  </p>
+
+                  <div className="project-tech">
+                    {project.tech.map((item) => (
+                      <span key={item} className="project-tag">{item}</span>
+                    ))}
+                  </div>
+
+                  <Link to={`/projects/${project.slug}`} className="project-link">
+                    View Project →
+                  </Link>
                 </div>
-
-                <Link
-                  to={`/projects/${project.slug}`}
-                  className="project-card__link"
-                >
-                  View Project →
-                </Link>
-              </article>
-            ))}
-          </div>
-        </Reveal>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   )

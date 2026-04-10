@@ -30,7 +30,7 @@ const experience = [
     period: '2025 – 2026',
     logo: eliteLogo,
     summary:
-      'Contributed to production web applications across two commercial roles, focusing on responsive frontend development, REST API integration, and accessibility improvements within an agile team.',
+      'Contributed to production web applications at a Brisbane-based development agency, focusing on responsive frontend development, REST API integration, and accessibility improvements within an agile team.',
     bullets: [
       'Built responsive front-end features using HTML5, CSS3/SCSS, and JavaScript, ensuring cross-browser compatibility and mobile-first design',
       'Developed and maintained React and Vue.js components, implementing state management patterns and integrating REST API endpoints',

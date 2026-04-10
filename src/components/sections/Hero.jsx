@@ -61,16 +61,16 @@ function Hero() {
 
             <motion.div className="hero__stats" variants={item}>
               <div>
-                <p className="hero__stat-value">Full-Stack</p>
-                <p className="hero__stat-label">Development focus</p>
+                <p className="hero__stat-value">2+</p>
+                <p className="hero__stat-label">Years commercial experience</p>
               </div>
               <div>
                 <p className="hero__stat-value">React</p>
-                <p className="hero__stat-label">Frontend engineering</p>
+                <p className="hero__stat-label">& Vue.js frontend</p>
               </div>
               <div>
-                <p className="hero__stat-value">Cloud</p>
-                <p className="hero__stat-label">Scalable systems</p>
+                <p className="hero__stat-value">C# · Python</p>
+                <p className="hero__stat-label">Backend & systems</p>
               </div>
             </motion.div>
           </motion.div>

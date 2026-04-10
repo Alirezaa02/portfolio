@@ -4,6 +4,7 @@ import dockerLogo from '../assets/icons/docker.png'
 import jsLogo from '../assets/icons/JS.png'
 import pythonLogo from '../assets/icons/python.png'
 import cssLogo from '../assets/icons/css.png'
+import vueLogo from '../assets/icons/vue.svg'
 
 export const languages = [
   { name: 'JavaScript (ES6+)', level: 90 },
@@ -19,6 +20,7 @@ export const techSkills = [
     category: 'Frontend',
     items: [
       { name: 'React', icon: reactLogo },
+      { name: 'Vue.js', icon: vueLogo },
       { name: 'JavaScript', icon: jsLogo },
       { name: 'CSS / SCSS', icon: cssLogo },
     ],
@@ -34,7 +36,6 @@ export const techSkills = [
 ]
 
 export const toolSkills = [
-  { name: 'Vue.js' },
   { name: '.NET MVC' },
   { name: 'REST APIs' },
   { name: 'Git & GitHub' },
