@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import profilePic from '../../assets/profile.jpg'
+import cv from '../../assets/Alireza_Saeb_CV.pdf'
 import '../../styles/hero.css'
 
 const container = {
   hidden: {},
   show: {
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.1,
-    },
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
   },
 }
 
@@ -29,6 +28,7 @@ function Hero() {
 
       <div className="container hero__container">
         <div className="hero__grid">
+
           {/* Left — staggered text */}
           <motion.div
             className="hero__content"
@@ -54,6 +54,9 @@ function Hero() {
             <motion.div className="hero__actions" variants={item}>
               <Link to="/projects" className="btn btn-primary">View Projects</Link>
               <Link to="/contact" className="btn btn-secondary">Contact Me</Link>
+              <a href={cv} download="Alireza_Saeb_CV.pdf" className="btn btn-secondary">
+                Download CV
+              </a>
             </motion.div>
 
             <motion.div className="hero__stats" variants={item}>
@@ -72,67 +75,63 @@ function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right — panel floats in */}
+          {/* Right — profile photo */}
           <motion.div
-            className="hero__panel"
+            className="hero__photo-side"
             variants={panelVariant}
             initial="hidden"
             animate="show"
           >
-            <div className="hero__panel-glow" />
+            {/* Glow behind photo */}
+            <div className="hero__photo-glow" />
 
+            {/* Floating photo */}
             <motion.div
-              className="hero__panel-card"
-              animate={{ y: [0, -10, 0] }}
+              className="hero__photo-wrap"
+              animate={{ y: [0, -12, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
             >
-              <div className="hero__window-dots">
-                <span className="hero__window-dot hero__window-dot--red" />
-                <span className="hero__window-dot hero__window-dot--yellow" />
-                <span className="hero__window-dot hero__window-dot--green" />
-              </div>
+              <div className="hero__photo-ring" />
+              <img
+                src={profilePic}
+                alt="Alireza Saeb"
+                className="hero__photo"
+              />
 
-              <div className="hero__panel-inner">
-                <div className="hero__panel-top">
-                  <span className="hero__panel-label">Current Focus</span>
-                  <span className="hero__badge">Portfolio Build</span>
-                </div>
+              {/* Status badge */}
+              <motion.div
+                className="hero__photo-badge"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.2, duration: 0.4 }}
+              >
+                <span className="hero__badge-dot" />
+                Open to Opportunities
+              </motion.div>
+            </motion.div>
 
-                <h3 className="hero__panel-title">Premium Software Engineer Portfolio</h3>
+            {/* Floating info cards */}
+            <motion.div
+              className="hero__float-card hero__float-card--left"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1, duration: 0.5 }}
+            >
+              <p className="hero__float-label">Based in</p>
+              <p className="hero__float-value">Brisbane, QLD</p>
+            </motion.div>
 
-                <p className="hero__panel-text">
-                  A modern portfolio experience showcasing projects, software
-                  engineering experience, and product-focused UI design.
-                </p>
-
-                <div className="hero__mini-grid">
-                  <div className="hero__mini-card">
-                    <p className="hero__mini-label">Frontend</p>
-                    <p className="hero__mini-value">React · CSS · Router</p>
-                  </div>
-                  <div className="hero__mini-card">
-                    <p className="hero__mini-label">Next Phase</p>
-                    <p className="hero__mini-value">Auth · Database · API</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="hero__bottom-grid">
-                <div className="hero__bottom-card">
-                  <p className="hero__mini-label">UI</p>
-                  <p className="hero__mini-value">Modern</p>
-                </div>
-                <div className="hero__bottom-card">
-                  <p className="hero__mini-label">Code</p>
-                  <p className="hero__mini-value">Clean</p>
-                </div>
-                <div className="hero__bottom-card">
-                  <p className="hero__mini-label">Build</p>
-                  <p className="hero__mini-value">Scalable</p>
-                </div>
-              </div>
+            <motion.div
+              className="hero__float-card hero__float-card--right"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1.1, duration: 0.5 }}
+            >
+              <p className="hero__float-label">Education</p>
+              <p className="hero__float-value">QUT — 2026</p>
             </motion.div>
           </motion.div>
+
         </div>
       </div>
     </section>
