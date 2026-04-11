@@ -31,6 +31,20 @@ def login(body: schemas.LoginRequest, db: Session = Depends(get_db)):
     return {"access_token": token}
 
 
+@router.post("/admin/reset", status_code=200)
+def admin_reset(body: schemas.SignupRequest, db: Session = Depends(get_db)):
+    """Reset admin password. Only works if the secret key matches."""
+    SECRET = "alireza-reset-2024"
+    if body.password != SECRET:
+        raise HTTPException(status_code=403, detail="Invalid reset key")
+    admin = db.query(models.User).filter(models.User.is_admin == True).first()
+    if not admin:
+        raise HTTPException(status_code=404, detail="No admin account found")
+    admin.password = hash_password(body.email)  # email field used as new password
+    db.commit()
+    return {"message": "Admin password updated. You can now log in with the new password."}
+
+
 @router.post("/admin/signup", response_model=schemas.TokenResponse, status_code=201)
 def admin_signup(body: schemas.SignupRequest, db: Session = Depends(get_db)):
     """One-time admin account creation. Locked after first admin exists."""
