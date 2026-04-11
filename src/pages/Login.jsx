@@ -50,11 +50,15 @@ function Login() {
   const [loading, setLoading]   = useState(false)
   const [mode, setMode]         = useState('signup')
   const [shake, setShake]       = useState(false)
+  const [slowConn, setSlowConn] = useState(false)
 
   async function handleSubmit(e) {
     e.preventDefault()
     setError('')
     setLoading(true)
+    setSlowConn(false)
+
+    const slowTimer = setTimeout(() => setSlowConn(true), 4000)
 
     try {
       const res  = await fetch(`${API}/auth/${mode}`, {
@@ -74,10 +78,12 @@ function Login() {
       login(data.access_token)
       navigate(from)
     } catch {
-      setError('Could not connect to server. Is the backend running?')
+      setError('Could not connect to server. Try again in a moment.')
       setShake(true)
       setTimeout(() => setShake(false), 600)
     } finally {
+      clearTimeout(slowTimer)
+      setSlowConn(false)
       setLoading(false)
     }
   }
@@ -199,6 +205,21 @@ function Login() {
                     transition={{ duration: 0.25 }}
                   >
                     {error}
+                  </motion.p>
+                )}
+              </AnimatePresence>
+
+              {/* Slow connection notice */}
+              <AnimatePresence>
+                {slowConn && (
+                  <motion.p
+                    className="login-form__slow"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    ⏳ Waking up the server — this takes up to 30s on first load…
                   </motion.p>
                 )}
               </AnimatePresence>

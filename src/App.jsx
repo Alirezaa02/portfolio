@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { startKeepAlive } from './lib/keepAlive'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { AuthProvider } from './context/AuthContext'
@@ -62,6 +63,7 @@ function App() {
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2600)
+    startKeepAlive()
     return () => clearTimeout(timer)
   }, [])
 
