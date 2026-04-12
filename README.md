@@ -2,7 +2,7 @@
 
 Personal portfolio website built as a full-stack application, showcasing experience, projects, skills, and education.
 
-**Live site:** [portfolio-demo-ten-topaz.vercel.app](https://portfolio-demo-ten-topaz.vercel.app)
+**Live site:** [alirezasaeb.com](https://www.alirezasaeb.com)
 
 ---
 
@@ -93,14 +93,6 @@ VITE_API_URL=http://localhost:8000
 VITE_EMAILJS_SERVICE_ID=your_service_id
 VITE_EMAILJS_TEMPLATE_ID=your_template_id
 VITE_EMAILJS_PUBLIC_KEY=your_public_key
-```
-
-### Create admin account (first time only)
-
-```bash
-curl -X POST http://localhost:8000/auth/admin/signup \
-  -H "Content-Type: application/json" \
-  -d '{"email": "your@email.com", "password": "yourpassword"}'
 ```
 
 Then visit `/admin` to manage content.

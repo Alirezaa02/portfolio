@@ -45,18 +45,3 @@ def admin_reset(body: schemas.SignupRequest, db: Session = Depends(get_db)):
     return {"message": "Admin password updated. You can now log in with the new password."}
 
 
-@router.post("/admin/signup", response_model=schemas.TokenResponse, status_code=201)
-def admin_signup(body: schemas.SignupRequest, db: Session = Depends(get_db)):
-    """One-time admin account creation. Locked after first admin exists."""
-    if db.query(models.User).filter(models.User.is_admin == True).first():
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Admin account already exists",
-        )
-    user = models.User(email=body.email, password=hash_password(body.password), is_admin=True)
-    db.add(user)
-    db.commit()
-    db.refresh(user)
-
-    token = create_access_token({"sub": user.email, "is_admin": True})
-    return {"access_token": token}
